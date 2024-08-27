@@ -20,6 +20,7 @@ namespace LocadoraVeiculos.Dominio.ModuloCliente
 		public string Nome { get; set; }
 		public string Email { get; set; }
 		public string Telefone { get; set; }
+		public int EnderecoId { get; set; }
 		public Endereco Endereco{ get; set; }
 
 		//public int CondutorId { get; set; }
@@ -27,6 +28,8 @@ namespace LocadoraVeiculos.Dominio.ModuloCliente
 
 		public TipoCadastroClienteEnum TipoCadastro { get; set; }
 		public string NumeroDocumento { get; set; }
+
+		public Cliente() { }
 
 		public override List<string> Validar()
 		{

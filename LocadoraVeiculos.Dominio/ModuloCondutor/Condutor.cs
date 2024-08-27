@@ -14,6 +14,10 @@ namespace LocadoraVeiculos.Dominio.ModuloCondutor
 		public string DataNascimento { get; set; }
 		public TipoHabilitacaoEnum Habilitacao { get; set; }
 
+		public Condutor()
+		{
+			
+		}
 
 		public override List<string> Validar()
 		{

@@ -1,5 +1,7 @@
 ﻿using LocadoraVeiculos.Dominio;
 using LocadoraVeiculos.Dominio.GrupoDeVeiculos;
+using LocadoraVeiculos.Dominio.ModuloCliente;
+using LocadoraVeiculos.Dominio.ModuloEndereco;
 using LocadoraVeiculos.Dominio.ModuloPlanos;
 using LocadoraVeiculos.Dominio.ModuloTaxa;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +15,8 @@ namespace LocadoraVeiculos.Infra.ORM.Compartilhado
         public DbSet<Veiculo> Veiculos { get; set; }
         public DbSet<PlanoCobranca> Planos { get; set; }
         public DbSet<Taxa> Taxas { get; set; }
+        public DbSet<Endereco> Enderecos { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

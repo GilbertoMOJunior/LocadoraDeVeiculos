@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LocadoraVeiculos.Dominio.Compartilhado;
+﻿using LocadoraVeiculos.Dominio.Compartilhado;
+using LocadoraVeiculos.Dominio.ModuloCliente;
 
 namespace LocadoraVeiculos.Dominio.ModuloEndereco
 {
 	public class Endereco : EntidadeBase
 	{
+		public Endereco()
+		{
+			
+		}
+		public Cliente Cliente { get; set; }
 		public string Cidade { get; set; }
 		public EstadoEnum Estado { get; set; }
 		public string Bairro { get; set; }
