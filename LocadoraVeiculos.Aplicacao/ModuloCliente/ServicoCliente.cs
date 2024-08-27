@@ -1,7 +1,5 @@
 ﻿using FluentResults;
-using LocadoraVeiculos.Dominio.GrupoDeVeiculos;
 using LocadoraVeiculos.Dominio.ModuloCliente;
-using LocadoraVeiculos.Dominio.ModuloEndereco;
 
 namespace LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos
 {

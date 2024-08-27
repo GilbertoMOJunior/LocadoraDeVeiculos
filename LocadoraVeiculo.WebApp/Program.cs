@@ -4,10 +4,14 @@ using LocadoraVeiculos.Aplicacao.ModuloPlanos;
 using LocadoraVeiculos.Aplicacao.ModuloTaxa;
 using LocadoraVeiculos.Aplicacao.ModuloVeiculo;
 using LocadoraVeiculos.Dominio.GrupoDeVeiculos;
+using LocadoraVeiculos.Dominio.ModuloCliente;
+using LocadoraVeiculos.Dominio.ModuloEndereco;
 using LocadoraVeiculos.Dominio.ModuloPlanos;
 using LocadoraVeiculos.Dominio.ModuloTaxa;
 using LocadoraVeiculos.Dominio.ModuloVeiculo;
 using LocadoraVeiculos.Infra.ORM.Compartilhado;
+using LocadoraVeiculos.Infra.ORM.ModuloCliente;
+using LocadoraVeiculos.Infra.ORM.ModuloEndereco;
 using LocadoraVeiculos.Infra.ORM.ModuloGrupoDeVeiculos;
 using LocadoraVeiculos.Infra.ORM.ModuloPlanos;
 using LocadoraVeiculos.Infra.ORM.ModuloTaxa;
@@ -27,11 +31,15 @@ namespace LocadoraVeiculo.WebApp
             builder.Services.AddScoped<IRepositorioVeiculo, RepositorioVeiculoEmOrm>();
             builder.Services.AddScoped<IRepositorioPlanos, RepositorioPlanosEmOrm>();
             builder.Services.AddScoped<IRepositorioTaxa, RepositorioTaxaEmOrm>();
+            builder.Services.AddScoped<IRepositorioCliente, RepositorioClienteEmOrm>();
+            builder.Services.AddScoped<IRepositorioEndereco, RepositorioEnderecoEmOrm>();
             
             builder.Services.AddScoped<ServicoGrupoVeiculos>();
             builder.Services.AddScoped<ServicoVeiculo>();
             builder.Services.AddScoped<ServicoPlanos>();
             builder.Services.AddScoped<ServicoTaxa>();
+            builder.Services.AddScoped<ServicoCliente>();
+            builder.Services.AddScoped<ServicoEndereco>();
 
             builder.Services.AddAutoMapper(cfg =>
             {
