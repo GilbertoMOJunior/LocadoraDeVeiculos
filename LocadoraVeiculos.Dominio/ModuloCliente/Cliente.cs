@@ -22,10 +22,6 @@ namespace LocadoraVeiculos.Dominio.ModuloCliente
 		public string Telefone { get; set; }
 		public int EnderecoId { get; set; }
 		public Endereco Endereco{ get; set; }
-
-		//public int CondutorId { get; set; }
-		//public Condutor Condutor { get; set; }
-
 		public TipoCadastroClienteEnum TipoCadastro { get; set; }
 		public string NumeroDocumento { get; set; }
 

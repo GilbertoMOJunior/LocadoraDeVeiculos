@@ -12,7 +12,7 @@ namespace LocadoraDeVeiculos.Testes.Unidade.ModuloCliente
 		{
 			var endereco = new Endereco(EstadoEnum.Santa_Catarina,"Lages","Coral","Dom Pedro II", "370");
 
-			var cliente = new Cliente("Nome", "email", "telefone", endereco, TipoCadastroClienteEnum.CPF, "000000");
+			var cliente = new Cliente("Nome", "email", "telefone", endereco, TipoCadastroClienteEnum.CPF, "08689966960");
 			
 			var erros = cliente.Validar();
 
