@@ -28,13 +28,13 @@ namespace LocadoraVeiculos.TestesIntegracao.ModuloTaxa
         }
 
         [TestMethod]
-        public void DeveInserirVeiculo()
+        public void DeveInserirTaxa()
         {
             var taxa = Builder<Taxa>
                 .CreateNew()
                 .With(g => g.Id = 0)
                 .Persist();
-
+            
             var taxaSelecionada= repositorio.SelecionarPorId(taxa.Id);
 
             Assert.IsNotNull(taxaSelecionada);
@@ -42,7 +42,7 @@ namespace LocadoraVeiculos.TestesIntegracao.ModuloTaxa
         }
 
         [TestMethod]
-        public void Deve_Editar_Veiculo()
+        public void Deve_Editar_Taxa()
         {
             var taxa = Builder<Taxa>
                 .CreateNew()
@@ -60,7 +60,7 @@ namespace LocadoraVeiculos.TestesIntegracao.ModuloTaxa
         }
 
         [TestMethod]
-        public void Deve_Excluir_Veiculo()
+        public void Deve_Excluir_Taxa()
         {
             var taxa = Builder<Taxa>
                 .CreateNew()

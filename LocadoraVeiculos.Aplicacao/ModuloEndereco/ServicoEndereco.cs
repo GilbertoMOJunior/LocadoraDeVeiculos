@@ -32,7 +32,6 @@ namespace LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos
 			endereco.Bairro = enderecoAtualizado.Bairro;
 			endereco.Rua = enderecoAtualizado.Rua;
 			endereco.Numero = enderecoAtualizado.Numero;
-			endereco.Cliente = enderecoAtualizado.Cliente;
 
 			repositorioEndereco.Editar(endereco);
 

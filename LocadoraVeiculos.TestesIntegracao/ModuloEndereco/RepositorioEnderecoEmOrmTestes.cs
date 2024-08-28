@@ -17,25 +17,28 @@ namespace LocadoraVeiculos.TestesIntegracao.ModuloGrupoVeiculos
 		{
 			dbContext = new LocadoraDbContext();
 
+			dbContext.Condutores.RemoveRange(dbContext.Condutores);
+			dbContext.Clientes.RemoveRange(dbContext.Clientes);
 			dbContext.Enderecos.RemoveRange(dbContext.Enderecos);
 
 			dbContext.SaveChanges();
 
 			repositorio = new RepositorioEnderecoEmOrm(dbContext);
 
-			BuilderSetup.SetCreatePersistenceMethod
-				<Endereco>(repositorio.Inserir);
+			BuilderSetup.SetCreatePersistenceMethod<Endereco>(repositorio.Inserir);
 		}
 
 		[TestMethod]
 		public void DeveInserirEndereco()
-		{
-			var endereco = new Endereco();
+        {
+            var endereco = Builder<Endereco>
+                .CreateNew()
+                .With(x => x.Id = 0)
+                .Build();
 
 			repositorio.Inserir(endereco);
 
-			var enderecoSelcionado = repositorio
-				.SelecionarPorId(endereco.Id);
+			var enderecoSelcionado = repositorio.SelecionarPorId(endereco.Id);
 
 			Assert.IsNotNull(enderecoSelcionado);
 			Assert.AreEqual(endereco, enderecoSelcionado);
@@ -55,8 +58,7 @@ namespace LocadoraVeiculos.TestesIntegracao.ModuloGrupoVeiculos
 			repositorio.Editar(endereco);
 
 			//Assert
-			var enderecoSelcionado = repositorio
-				.SelecionarPorId(endereco.Id);
+			var enderecoSelcionado = repositorio.SelecionarPorId(endereco.Id);
 
 			Assert.IsNotNull(enderecoSelcionado);
 			Assert.AreEqual(endereco, enderecoSelcionado);

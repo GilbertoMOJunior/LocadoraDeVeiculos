@@ -39,11 +39,10 @@ namespace LocadoraVeiculos.Infra.ORM.ModuloCliente
 				.HasColumnType("int")
 				.IsRequired();
 
-			builder.HasOne(c => c.Endereco)
-				.WithOne(e => e.Cliente)
-				.HasForeignKey<Cliente>(c => c.EnderecoId)
-				.OnDelete(DeleteBehavior.Restrict);
-
-		}
+            builder.HasOne(c => c.Endereco)
+                .WithMany()  
+                .HasForeignKey(c => c.EnderecoId)
+                .OnDelete(DeleteBehavior.Restrict);
+        }
 	}
 }

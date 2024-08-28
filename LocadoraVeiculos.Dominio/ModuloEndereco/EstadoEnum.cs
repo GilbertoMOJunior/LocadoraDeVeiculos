@@ -1,40 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace LocadoraVeiculos.Dominio.ModuloEndereco
 {
-	public enum EstadoEnum
-	{
-		Acre,
-		Alagoas,
-		Amapá,
-		Amazonas,
-		Bahia,
-		Ceará,
-		Distrito_Federal,
-		Espírito_Santo,
-		Pará,
-		Rondônia,
-		Roraima,
-		Tocantins,
-		Rio_Grande_do_Sul,
-		Santa_Catarina,
-		Paraná,
-		São_Paulo,
-		Rio_de_Janeiro,
-		Minas_Gerais,
-		Goiás,
-		Mato_Grosso_do_Sul,
-		Mato_Grosso,
-		Sergipe,
-		Pernambuco,
-		Paraíba,
-		Rio_Grande_do_Norte,
-		Piauí,
-		Maranhão
+    public enum EstadoEnum
+    {
+        Acre,
+        Alagoas,
+        Amapá,
+        Amazonas,
+        Bahia,
+        Ceará,
+        [Description("Distrito Federal")]
+        Distrito_Federal,
+        [Description("Espírito Santo")]
+        Espírito_Santo,
+        Pará,
+        Rondônia,
+        Roraima,
+        Tocantins,
+        [Description("Rio Grande do Sul")]
+        Rio_Grande_do_Sul,
+        [Description("Santa Catarina")]
+        Santa_Catarina,
+        Paraná,
+        [Description("São Paulo")]
+        São_Paulo,
+        [Description("Rio de Janeiro")]
+        Rio_de_Janeiro,
+        [Description("Minas Gerais")]
+        Minas_Gerais,
+        Goiás,
+        [Description("Mato Grosso do Sul")]
+        Mato_Grosso_do_Sul,
+        [Description("Mato Grosso")]
+        Mato_Grosso,
+        Sergipe,
+        Pernambuco,
+        Paraíba,
+        [Description("Rio Grande do Norte")]
+        Rio_Grande_do_Norte,
+        Piauí,
+        Maranhão
+    }
 
-	}
 }

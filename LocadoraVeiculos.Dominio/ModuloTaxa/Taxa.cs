@@ -19,6 +19,11 @@ namespace LocadoraVeiculos.Dominio.ModuloTaxa
         public string Nome { get; set; }
         public decimal Valor { get; set; }
         public TipoCobrancaEnum TipoCobranca { get; set; }
+
+        public Taxa()
+        {
+            
+        }
         
         public override List<string> Validar()
         {

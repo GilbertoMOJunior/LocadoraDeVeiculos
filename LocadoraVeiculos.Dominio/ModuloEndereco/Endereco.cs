@@ -1,5 +1,4 @@
 ﻿using LocadoraVeiculos.Dominio.Compartilhado;
-using LocadoraVeiculos.Dominio.ModuloCliente;
 
 namespace LocadoraVeiculos.Dominio.ModuloEndereco
 {
@@ -9,7 +8,7 @@ namespace LocadoraVeiculos.Dominio.ModuloEndereco
 		{
 			
 		}
-		public Cliente Cliente { get; set; }
+
 		public string Cidade { get; set; }
 		public EstadoEnum Estado { get; set; }
 		public string Bairro { get; set; }
