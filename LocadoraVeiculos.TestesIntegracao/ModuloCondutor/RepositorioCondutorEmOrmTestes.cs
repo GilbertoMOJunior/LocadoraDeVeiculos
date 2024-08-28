@@ -1,14 +1,5 @@
 ﻿using FizzWare.NBuilder;
-using LocadoraVeiculos.Dominio.Compartilhado;
-using LocadoraVeiculos.Dominio.ModuloCliente;
 using LocadoraVeiculos.Infra.ORM.Compartilhado;
-using LocadoraVeiculos.Infra.ORM.ModuloCliente;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using LocadoraVeiculos.Dominio.ModuloCondutor;
 using LocadoraVeiculos.Dominio.ModuloEndereco;
 using LocadoraVeiculos.Infra.ORM.ModuloEndereco;

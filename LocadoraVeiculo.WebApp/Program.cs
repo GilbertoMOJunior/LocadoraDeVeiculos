@@ -1,10 +1,12 @@
 using System.Reflection;
+using LocadoraVeiculos.Aplicacao.ModuloCondutor;
 using LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos;
 using LocadoraVeiculos.Aplicacao.ModuloPlanos;
 using LocadoraVeiculos.Aplicacao.ModuloTaxa;
 using LocadoraVeiculos.Aplicacao.ModuloVeiculo;
 using LocadoraVeiculos.Dominio.GrupoDeVeiculos;
 using LocadoraVeiculos.Dominio.ModuloCliente;
+using LocadoraVeiculos.Dominio.ModuloCondutor;
 using LocadoraVeiculos.Dominio.ModuloEndereco;
 using LocadoraVeiculos.Dominio.ModuloPlanos;
 using LocadoraVeiculos.Dominio.ModuloTaxa;
@@ -16,6 +18,7 @@ using LocadoraVeiculos.Infra.ORM.ModuloGrupoDeVeiculos;
 using LocadoraVeiculos.Infra.ORM.ModuloPlanos;
 using LocadoraVeiculos.Infra.ORM.ModuloTaxa;
 using LocadoraVeiculos.Infra.ORM.ModuloVeiculo;
+using LocadoraVeiculos.Infra.ORM.NewFolder;
 
 namespace LocadoraVeiculo.WebApp
 {
@@ -33,6 +36,7 @@ namespace LocadoraVeiculo.WebApp
             builder.Services.AddScoped<IRepositorioTaxa, RepositorioTaxaEmOrm>();
             builder.Services.AddScoped<IRepositorioCliente, RepositorioClienteEmOrm>();
             builder.Services.AddScoped<IRepositorioEndereco, RepositorioEnderecoEmOrm>();
+            builder.Services.AddScoped<IRepositorioCondutor, RepositorioCondutorEmOrm>();
             
             builder.Services.AddScoped<ServicoGrupoVeiculos>();
             builder.Services.AddScoped<ServicoVeiculo>();
@@ -40,6 +44,7 @@ namespace LocadoraVeiculo.WebApp
             builder.Services.AddScoped<ServicoTaxa>();
             builder.Services.AddScoped<ServicoCliente>();
             builder.Services.AddScoped<ServicoEndereco>();
+            builder.Services.AddScoped<ServicoCondutor>();
 
             builder.Services.AddAutoMapper(cfg =>
             {

@@ -31,9 +31,9 @@ public class ClienteController : WebControllerBase
 
 		var clientes = resultado.Value;
 
-		var listarTaxasVm = mapeador.Map<IEnumerable<ListarClienteViewModel>>(clientes);
+		var listarClientesVm = mapeador.Map<IEnumerable<ListarClienteViewModel>>(clientes);
 
-		return View(listarTaxasVm);
+		return View(listarClientesVm);
 	}
 
 	public IActionResult Inserir()
