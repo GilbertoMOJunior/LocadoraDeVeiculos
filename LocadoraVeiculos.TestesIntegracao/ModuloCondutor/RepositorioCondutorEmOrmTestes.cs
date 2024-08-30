@@ -1,7 +1,9 @@
 ﻿using FizzWare.NBuilder;
+using LocadoraVeiculos.Dominio.ModuloCliente;
 using LocadoraVeiculos.Infra.ORM.Compartilhado;
 using LocadoraVeiculos.Dominio.ModuloCondutor;
 using LocadoraVeiculos.Dominio.ModuloEndereco;
+using LocadoraVeiculos.Infra.ORM.ModuloCliente;
 using LocadoraVeiculos.Infra.ORM.ModuloEndereco;
 using LocadoraVeiculos.Infra.ORM.NewFolder;
 
@@ -14,6 +16,7 @@ namespace LocadoraVeiculos.TestesIntegracao.ModuloCondutor
         private LocadoraDbContext dbContext;
         private RepositorioCondutorEmOrm repositorio;
         private RepositorioEnderecoEmOrm repositorioEndereco;
+        private RepositorioClienteEmOrm repositorioCliente;
 
         [TestInitialize]
         public void Inicializar()
@@ -28,8 +31,10 @@ namespace LocadoraVeiculos.TestesIntegracao.ModuloCondutor
 
             repositorio = new RepositorioCondutorEmOrm(dbContext);
             repositorioEndereco = new RepositorioEnderecoEmOrm(dbContext);
+            repositorioCliente = new RepositorioClienteEmOrm(dbContext);
 
             BuilderSetup.SetCreatePersistenceMethod<Condutor>(repositorio.Inserir);
+            BuilderSetup.SetCreatePersistenceMethod<Cliente>(repositorioCliente.Inserir);
             BuilderSetup.SetCreatePersistenceMethod<Endereco>(repositorioEndereco.Inserir);
         }
 
@@ -37,7 +42,7 @@ namespace LocadoraVeiculos.TestesIntegracao.ModuloCondutor
         public void DeveInserirCondutor()
         {
             //Arrange
-            var endereco = Builder<Endereco>
+            var cliente = Builder<Cliente>
                 .CreateNew()
                 .With(e => e.Id = 0)
                 .Persist();
@@ -45,7 +50,7 @@ namespace LocadoraVeiculos.TestesIntegracao.ModuloCondutor
             var condutor = Builder<Condutor>
                 .CreateNew()
                 .With(c => c.Id = 0)
-                .With(c => c.EnderecoId = endereco.Id)
+                .With(c => c.ClienteId = cliente.Id)
                 .Build();
 
             //Action
@@ -61,7 +66,7 @@ namespace LocadoraVeiculos.TestesIntegracao.ModuloCondutor
         public void DeveEditarCondutor()
         {
             //Arrange
-            var endereco = Builder<Endereco>
+            var cliente = Builder<Cliente>
                 .CreateNew()
                 .With(e => e.Id = 0)
                 .Persist();
@@ -69,7 +74,7 @@ namespace LocadoraVeiculos.TestesIntegracao.ModuloCondutor
             var condutor = Builder<Condutor>
                 .CreateNew()
                 .With(c => c.Id = 0)
-                .With(c => c.EnderecoId = endereco.Id)
+                .With(c => c.ClienteId = cliente.Id)
                 .Build();
 
             condutor.Nome = "Teste";
@@ -88,8 +93,23 @@ namespace LocadoraVeiculos.TestesIntegracao.ModuloCondutor
         public void DeveExcluirCondutor()
         {
             //Arrange
+            var cliente = Builder<Cliente>
+                .CreateNew()
+                .With(e => e.Id = 0)
+                .Persist();
+
+            var condutor = Builder<Condutor>
+                .CreateNew()
+                .With(c => c.Id = 0)
+                .With(c => c.ClienteId = cliente.Id)
+                .Build();
+
             //Action
+            repositorio.Excluir(condutor);
+
             //Assert
-            }
+            Assert.IsNull(repositorio.SelecionarPorId(condutor.Id));
+            Assert.AreEqual(0 , repositorio.SelecionarTodos().Count);
+        }
     }
 }

@@ -30,7 +30,8 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCondutor
             condutor.CPF = condutorAtualizado.CPF;
             condutor.NumeroCNH = condutorAtualizado.NumeroCNH;
             condutor.DataNascimento = condutorAtualizado.DataNascimento;
-            condutor.Endereco = condutorAtualizado.Endereco;
+            condutor.ClienteId = condutorAtualizado.ClienteId;
+            condutor.Cliente = condutorAtualizado.Cliente;
 
             repositorioCondutor.Editar(condutor);
 

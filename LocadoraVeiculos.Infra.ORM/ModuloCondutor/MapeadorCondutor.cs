@@ -31,9 +31,9 @@ namespace LocadoraVeiculos.Infra.ORM.NewFolder
                 .HasColumnType("date")
                 .IsRequired();
 
-            builder.HasOne(c => c.Endereco)
+            builder.HasOne(c => c.Cliente)
                 .WithMany()
-                .HasForeignKey(c => c.EnderecoId)
+                .HasForeignKey(c => c.ClienteId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

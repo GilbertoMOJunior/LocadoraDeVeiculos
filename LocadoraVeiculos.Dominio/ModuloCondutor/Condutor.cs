@@ -1,37 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
-using LocadoraVeiculos.Dominio.Compartilhado;
-using LocadoraVeiculos.Dominio.ModuloEndereco;
+﻿using LocadoraVeiculos.Dominio.Compartilhado;
+using LocadoraVeiculos.Dominio.ModuloCliente;
 
 namespace LocadoraVeiculos.Dominio.ModuloCondutor
 {
     
 	public class Condutor : EntidadeBase
 	{
+        public int ClienteId { get; set; }
+        public Cliente? Cliente{ get; set; }
 		public string Nome { get; set; }
 		public string CPF { get; set; }
-		public int EnderecoId{ get; set; }
-		public Endereco Endereco { get; set; }
 		public DateTime DataNascimento { get; set; }
         public string NumeroCNH { get; set; }
 
-
-		public Condutor(string nome, string cpf, Endereco endereco, DateTime dataNascimento, string numeroCnh)
+		public Condutor(string nome, string cpf, DateTime dataNascimento, string numeroCnh, int clienteId)
         {
             Nome = nome;
             CPF = cpf;
-            Endereco = endereco;
             DataNascimento = dataNascimento;
             NumeroCNH = numeroCnh;
+            ClienteId = clienteId;
         }
 
         public Condutor()
         {
-            
         }
 
 		public override List<string> Validar()

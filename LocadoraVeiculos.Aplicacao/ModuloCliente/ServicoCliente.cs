@@ -30,7 +30,9 @@ namespace LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos
 			cliente.Email = clienteAtualizado.Email;
 			cliente.Telefone = clienteAtualizado.Telefone;
 			cliente.EnderecoId = clienteAtualizado.EnderecoId;
+			cliente.TipoCadastro = clienteAtualizado.TipoCadastro;
 			cliente.NumeroDocumento = clienteAtualizado.NumeroDocumento;
+            cliente.Endereco = clienteAtualizado.Endereco;
 
 			repositorioCliente.Editar(cliente);
 

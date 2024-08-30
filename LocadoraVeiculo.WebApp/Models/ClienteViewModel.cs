@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using LocadoraVeiculos.Dominio.ModuloCliente;
 using LocadoraVeiculos.Dominio.ModuloEndereco;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace LocadoraDeVeiculos.WebApp.Models;
 
@@ -24,7 +25,6 @@ public class FormularioClienteViewModel
 	[Required(ErrorMessage = "O número do documento é obrigatório")]
 	[MinLength(11, ErrorMessage = "O número do documento deve conter ao menos 11 caracteres")]
 	public string NumeroDocumento { get; set; }
-
     public string Cidade { get; set; }
     public EstadoEnum Estado { get; set; }
     public string Bairro { get; set; }

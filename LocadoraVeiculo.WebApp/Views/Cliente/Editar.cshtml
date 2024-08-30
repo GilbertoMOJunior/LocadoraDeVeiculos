@@ -1,4 +1,5 @@
 ﻿@using LocadoraVeiculos.Dominio.ModuloCliente
+@using LocadoraVeiculos.Dominio.ModuloEndereco
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 
 @model LocadoraDeVeiculos.WebApp.Models.FormularioClienteViewModel
@@ -29,13 +30,13 @@
 
             <div>
                 <label class="control-label fw-semibold mb-1">Tipo de Cadastro</label>
-                <select id="inputTipoCadastro" class="form-control mb-1" asp-for="TipoCadastro" asp-items="Html.GetEnumSelectList<TipoCadastroClienteEnum>()"></select>
+                <select class="form-control mb-1" asp-for="TipoCadastro" asp-items="Html.GetEnumSelectList<TipoCadastroClienteEnum>()"></select>
                 <span class="text-danger fs-6" asp-validation-for="TipoCadastro"></span>
             </div>
 
             <div>
                 <label id="lblNumeroDocumento" class="control-label fw-semibold mb-1">Número do Documento</label>
-                <input id="inputNumeroDocumento" class="form-control mb-1" asp-for="NumeroDocumento" />
+                <input class="form-control mb-1" asp-for="NumeroDocumento" />
                 <span class="text-danger fs-6" asp-validation-for="NumeroDocumento"></span>
             </div>
 
@@ -47,7 +48,7 @@
 
             <div>
                 <label class="control-label fw-semibold mb-1">Estado</label>
-                <input class="form-control mb-1" asp-for="Estado" />
+                <select class="form-control mb-1" asp-for="Estado" asp-items="Html.GetEnumSelectList<EstadoEnum>()"></select>
                 <span class="text-danger fs-6" asp-validation-for="Estado"></span>
             </div>
 

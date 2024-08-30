@@ -72,8 +72,7 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EnderecoId")
-                        .IsUnique();
+                    b.HasIndex("EnderecoId");
 
                     b.ToTable("TBCliente", (string)null);
                 });
@@ -90,11 +89,11 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(25)");
 
+                    b.Property<int>("ClienteId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("DataNascimento")
                         .HasColumnType("date");
-
-                    b.Property<int>("EnderecoId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -106,7 +105,7 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EnderecoId");
+                    b.HasIndex("ClienteId");
 
                     b.ToTable("DBCondutor", (string)null);
                 });
@@ -238,8 +237,8 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
             modelBuilder.Entity("LocadoraVeiculos.Dominio.ModuloCliente.Cliente", b =>
                 {
                     b.HasOne("LocadoraVeiculos.Dominio.ModuloEndereco.Endereco", "Endereco")
-                        .WithOne("Cliente")
-                        .HasForeignKey("LocadoraVeiculos.Dominio.ModuloCliente.Cliente", "EnderecoId")
+                        .WithMany()
+                        .HasForeignKey("EnderecoId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -248,13 +247,13 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
 
             modelBuilder.Entity("LocadoraVeiculos.Dominio.ModuloCondutor.Condutor", b =>
                 {
-                    b.HasOne("LocadoraVeiculos.Dominio.ModuloEndereco.Endereco", "Endereco")
+                    b.HasOne("LocadoraVeiculos.Dominio.ModuloCliente.Cliente", "Cliente")
                         .WithMany()
-                        .HasForeignKey("EnderecoId")
+                        .HasForeignKey("ClienteId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Endereco");
+                    b.Navigation("Cliente");
                 });
 
             modelBuilder.Entity("LocadoraVeiculos.Dominio.ModuloPlanos.PlanoCobranca", b =>
@@ -282,12 +281,6 @@ namespace LocadoraVeiculos.Infra.ORM.Migrations
             modelBuilder.Entity("LocadoraVeiculos.Dominio.GrupoDeVeiculos.GrupoDeVeiculos", b =>
                 {
                     b.Navigation("Veiculos");
-                });
-
-            modelBuilder.Entity("LocadoraVeiculos.Dominio.ModuloEndereco.Endereco", b =>
-                {
-                    b.Navigation("Cliente")
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

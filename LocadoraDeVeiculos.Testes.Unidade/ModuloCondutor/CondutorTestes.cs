@@ -1,4 +1,5 @@
-﻿using LocadoraVeiculos.Dominio.ModuloCondutor;
+﻿using LocadoraVeiculos.Dominio.ModuloCliente;
+using LocadoraVeiculos.Dominio.ModuloCondutor;
 using LocadoraVeiculos.Dominio.ModuloEndereco;
 
 namespace LocadoraDeVeiculos.Testes.Unidade.ModuloCondutor
@@ -11,8 +12,10 @@ namespace LocadoraDeVeiculos.Testes.Unidade.ModuloCondutor
         public void DeveCriarInstanciaValida()
         {
             var endereco = new Endereco(EstadoEnum.Santa_Catarina, "Lages", "Coral", "Dom Pedro II", "370");
+            
+            var cliente = new Cliente("Nome", "Teste@Email.com", "4984178924", endereco, TipoCadastroClienteEnum.CPF, "08689966960");
 
-            var condutor = new Condutor("Nome", "08689966960", endereco, DateTime.MinValue, "098765432");
+            var condutor = new Condutor("Nome", "08689966960", DateTime.MinValue, "098765432", cliente.Id);
 
             var erros = condutor.Validar();
 
@@ -22,9 +25,7 @@ namespace LocadoraDeVeiculos.Testes.Unidade.ModuloCondutor
         [TestMethod]
         public void DeveCriarInstanciaInvalida()
         {
-            var endereco = new Endereco(EstadoEnum.Santa_Catarina, "", "", "", "");
-
-            var condutor = new Condutor("", "", endereco, DateTime.Today, "");
+            var condutor = new Condutor("", "", DateTime.Today, "", 0);
 
             var erros = condutor.Validar();
 

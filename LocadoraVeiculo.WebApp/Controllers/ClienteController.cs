@@ -1,22 +1,26 @@
 ﻿using AutoMapper;
 using LocadoraDeVeiculos.WebApp.Controllers.Compartilhado;
 using LocadoraDeVeiculos.WebApp.Models;
+using LocadoraVeiculo.WebApp.Models;
 using LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos;
 using LocadoraVeiculos.Dominio.ModuloCliente;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace LocadoraDeVeiculos.WebApp.Controllers;
 
 public class ClienteController : WebControllerBase
 {
 	private readonly ServicoCliente servico;
+	private readonly ServicoEndereco servicoEndereco;
 	private readonly IMapper mapeador;
 
-	public ClienteController(ServicoCliente servico, IMapper mapeador)
+	public ClienteController(ServicoCliente servico, IMapper mapeador, ServicoEndereco servicoEndereco)
 	{
 		this.servico = servico;
 		this.mapeador = mapeador;
-	}
+        this.servicoEndereco = servicoEndereco;
+    }
 
 	public IActionResult Listar()
 	{
@@ -65,21 +69,39 @@ public class ClienteController : WebControllerBase
 
 	public IActionResult Editar(int id)
 	{
-		var resultado = servico.SelecionarPorId(id);
+        var resultado = servico.SelecionarPorId(id);
 
-		if (resultado.IsFailed)
-		{
-			ApresentarMensagemFalha(resultado.ToResult());
+        if (resultado.IsFailed)
+        {
+            ApresentarMensagemFalha(resultado.ToResult());
 
-			return RedirectToAction(nameof(Listar));
-		}
+            return RedirectToAction(nameof(Listar));
+        }
 
-		var cliente = resultado.Value;
+        var cliente = resultado.Value;
 
-		var editarVm = mapeador.Map<EditarClienteViewModel>(cliente);
+        var resultadoEndereco = servicoEndereco.SelecionarPorId(cliente.EnderecoId);
 
-		return View(editarVm);
-	}
+        if (resultadoEndereco.IsFailed)
+        {
+            ApresentarMensagemFalha(resultadoEndereco.ToResult());
+
+            return null;
+        }
+
+		var endereco = resultadoEndereco.Value;
+        
+        var editarVm = mapeador.Map<EditarClienteViewModel>(cliente);
+        
+        editarVm.Estado = endereco.Estado;
+        editarVm.Cidade = endereco.Cidade;
+        editarVm.Bairro = endereco.Bairro;
+        editarVm.Rua = endereco.Rua;
+        editarVm.Numero = endereco.Numero;
+        editarVm.Id = endereco.Id;
+
+        return View(editarVm);
+    }
 
 	[HttpPost]
 	public IActionResult Editar(EditarClienteViewModel editarVm)
