@@ -1,0 +1,57 @@
+﻿@using LocadoraVeiculos.Dominio.ModuloCliente
+@using LocadoraVeiculos.Dominio.ModuloEndereco
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+
+@model FormularioCondutorViewModel
+
+@{
+    ViewBag.Title = "Inserir Novo Condutor";
+}
+
+<div class="col">
+    <div class="row gap-3 my-3 my-xl-5">
+        <form class="col-lg-6 d-grid gap-3 fs-5" asp-action="Inserir">
+	        <div>
+		        <label class="control-label fw-semibold mb-1">Nome</label>
+		        <input class="form-control mb-1" asp-for="Nome" />
+		        <span class="text-danger fs-6" asp-validation-for="Nome"></span>
+	        </div>
+
+	        <div>
+		        <label class="control-label fw-semibold mb-1">CPF</label>
+		        <input class="form-control mb-1" asp-for="CPF" />
+		        <span class="text-danger fs-6" asp-validation-for="CPF"></span>
+	        </div>
+
+	        <div>
+		        <label class="control-label fw-semibold mb-1">CNH</label>
+		        <input class="form-control mb-1" asp-for="NumeroCNH" />
+		        <span class="text-danger fs-6" asp-validation-for="NumeroCNH"></span>
+	        </div>
+
+	        <div>
+		        <label class="control-label fw-semibold mb-1">Data Nascimento</label>
+		        <input id="inputTipoCadastro" class="form-control mb-1" asp-for="DataNascimento" type="date"> </input>
+		        <span class="text-danger fs-6" asp-validation-for="DataNascimento"></span>
+	        </div>
+			
+	        <div>
+		        <label class="control-label fw-semibold mb-1">Cliente</label>
+		        <select class="form-control mb-1" asp-for="ClienteId" asp-items="Model.Clientes"></select>
+		        <span class="text-danger fs-6" asp-validation-for="ClienteId"></span>
+	        </div>
+			
+	        <div class="d-grid gap-2 d-md-block mt-4">
+	            <button class="btn btn-primary px-5">
+		            <i class="bi bi-floppy-fill me-1"></i>
+                    Gravar
+                </button>
+
+                <a class="btn btn-outline-primary px-5" asp-action="Listar">
+                    <i class="bi bi-arrow-return-left me-1"></i>
+                    Voltar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
